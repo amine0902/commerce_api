@@ -30,6 +30,11 @@ class Categorie
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="CommerceBundle\Entity\Produit", mappedBy="categories")
+     * @var Produit[]
+     */
+    protected $produits;
 
     /**
      * Get id
@@ -63,5 +68,46 @@ class Categorie
     public function getNom()
     {
         return $this->nom;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \CommerceBundle\Entity\Produit $produit
+     *
+     * @return Categorie
+     */
+    public function addProduit(\CommerceBundle\Entity\Produit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \CommerceBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\CommerceBundle\Entity\Produit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }

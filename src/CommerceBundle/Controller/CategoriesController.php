@@ -11,13 +11,22 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 
 class CategoriesController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('@Commerce/Default/index.html.twig');
-    }
     /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Post("/categories")
+     * @Rest\View(serializerGroups={"categories"})
+     * @Rest\Get("/categories/")
+     */
+    public function getCategoriesAction(Request $request)
+    {
+        $categories = $this->getDoctrine()->getManager()
+            ->getRepository('CommerceBundle:Categorie')
+            ->findAll();
+
+        return $categories;
+    }
+
+    /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"categories"})
+     * @Rest\Post("/categories/")
      */
     public function ajouterCategoriesAction(Request $request)
     {
@@ -36,19 +45,5 @@ class CategoriesController extends Controller
         }
 
     }
-
-    /**
-     * @Rest\View()
-     * @Rest\Get("/categories")
-     */
-    public function getCategoriesAction(Request $request)
-    {
-        $categories = $this->getDoctrine()->getManager()
-            ->getRepository('CommerceBundle:Categorie')
-            ->findAll();
-
-        return $categories;
-    }
-
 
 }

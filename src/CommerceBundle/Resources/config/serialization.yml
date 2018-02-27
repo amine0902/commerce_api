@@ -1,0 +1,20 @@
+# src/CommerceBundle/Resources/config/serialization.yml
+CommerceBundle\Entity\Categorie:
+    attributes:
+        id:
+            groups: ['categories', 'produits']
+        nom:
+            groups: ['categories', 'produits']
+
+CommerceBundle\Entity\Produit:
+    attributes:
+        id:
+            groups: ['categories', 'produits']
+        nom:
+            groups: ['categories', 'produits']
+        prix:
+            groups: ['categories', 'produits']
+        quantite:
+            groups: ['categories', 'produits']
+        categories:
+            groups: ['produits']
