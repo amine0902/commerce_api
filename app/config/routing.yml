@@ -1,0 +1,7 @@
+commerce:
+    resource: "@CommerceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+categories:
+    type:     rest
+    resource: CommerceBundle\Controller\CategoriesController
