@@ -5,3 +5,7 @@ commerce:
 categories:
     type:     rest
     resource: CommerceBundle\Controller\CategoriesController
+
+produits:
+    type:     rest
+    resource: CommerceBundle\Controller\ProduitsController

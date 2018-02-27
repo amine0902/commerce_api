@@ -65,4 +65,3 @@ class Categorie
         return $this->nom;
     }
 }
-
