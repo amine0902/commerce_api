@@ -37,4 +37,18 @@ class CategoriesController extends Controller
 
     }
 
+    /**
+     * @Rest\View()
+     * @Rest\Get("/categories")
+     */
+    public function getCategoriesAction(Request $request)
+    {
+        $categories = $this->getDoctrine()->getManager()
+            ->getRepository('CommerceBundle:Categorie')
+            ->findAll();
+
+        return $categories;
+    }
+
+
 }
