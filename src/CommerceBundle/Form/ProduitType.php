@@ -2,6 +2,8 @@
 
 namespace CommerceBundle\Form;
 
+use CommerceBundle\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +19,10 @@ class ProduitType extends AbstractType
             ->add('nom')
             ->add('prix')
             ->add('quantite')
-            ->add('categories');
+            ->add('categories', EntityType::class, array(
+                'class' => Categorie::class,
+                'multiple' => true
+            ));
     }/**
      * {@inheritdoc}
      */

@@ -22,16 +22,37 @@ composer update
 ```
     /produits/
 ```
+*   format json pour les tests
+```
+{
+	"nom": "produit1",
+	"prix": "400",
+	"quantite": "9",
+	"categories": [1, 4]
+}
+```
 *   URL pour ajouter categorie
 ```    
        /categories/
+```
+*   format json pour les tests
+```
+{
+	"nom": "categorie1"
+}
 ```
 ###### 5- Les GETS urls:
 *   Afficher les categories
 ```
        /categories/
 ```
-*   Afficher les produits dans une catégorie + pagination
+*   Afficher les produits dans une catégorie
+```
+       /categories/1/products/
+```
+*   Afficher les produits dans une catégorie avec pagination
 ```
        /categories/1/products/?page=1
+       /categories/1/products/?page=2
+       ...
 ```
